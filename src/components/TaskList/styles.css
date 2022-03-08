@@ -1,0 +1,60 @@
+.task-list {
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+  padding: 0 5rem;
+  margin: 2rem 0 2rem 0;
+}
+
+.completed {
+  text-decoration:line-through;
+  opacity: 0.8;
+}
+
+.checkbox {
+  cursor: pointer;
+  appearance: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid rgb(101, 110, 128);
+  background: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox:before {
+  content: "";
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox:checked:before {
+  background: none;
+  width: 0.7rem;
+  height: 2.2rem;
+  border-right: 0.4rem solid rgb(70, 143, 100);
+  border-bottom: 0.4rem solid rgb(70, 143, 100);
+  transform: rotate(40deg);
+  opacity: 1;
+  transition: 0.1s;
+  bottom: 0.6rem;
+  right: 0.1rem;
+}
+
+.delete {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  font-family: "Aclonica", sans-serif;
+  transition: 0.3s;
+  color: rgb(196, 72, 72);
+  transition: 0.3s;
+}
+
+.delete:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}
