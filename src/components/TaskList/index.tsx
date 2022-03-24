@@ -9,12 +9,12 @@ export function TaskList({tasks, setTasks}) {
   }, [])
 
   function getLocalTasks() {
-    let locaTasks = localStorage.getItem("tasksList");
-    if(locaTasks === null) {
+    let localTasks = localStorage.getItem("tasksList");
+    if(localTasks === null) {
       localStorage.setItem("tasksList", JSON.stringify([]));
     } else {
-      locaTasks = JSON.parse(locaTasks);
-      setTasks(locaTasks);
+      localTasks = JSON.parse(localTasks);
+      setTasks(localTasks);
     }
   }
   
@@ -25,12 +25,15 @@ export function TaskList({tasks, setTasks}) {
     } : response);
 
     setTasks(completedTask);
+    localStorage.setItem("tasksList", JSON.stringify(completedTask));
   }
 
   function handleRemoveTask(id: number) {
-    const removedTask = tasks.filter(response => response.id !== id);
+    const removedTask = tasks.findIndex(response => response.id === id);
+    tasks.splice(removedTask, 1);
 
-    setTasks(removedTask);
+    setTasks([...tasks]);
+    localStorage.setItem("tasksList", JSON.stringify([...tasks]));
   }
 
   return(

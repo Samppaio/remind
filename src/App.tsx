@@ -7,19 +7,9 @@ export default function App() {
   const [tasks, setTasks] = useState([]);
   const [newTaskModalOpen, setNewTaskModalOpen] = useState(false);
 
-  function handleOpenNewTaskModal() {
-    setNewTaskModalOpen(true);
-  }
-
-  function handleCloseNewTaskModal() {
-    setNewTaskModalOpen(false);
-  }
-
   return(
     <div className="main">
-      <Header
-        handleOpenNewTaskModal={handleOpenNewTaskModal}
-      />
+      <Header handleOpenNewTaskModal={() => setNewTaskModalOpen(true)} />
       <TaskList 
         tasks={tasks}
         setTasks={setTasks}
@@ -28,7 +18,7 @@ export default function App() {
         tasks={tasks}
         setTasks={setTasks}
         isOpen={newTaskModalOpen}
-        onRequestClose={handleCloseNewTaskModal}
+        onRequestClose={() => setNewTaskModalOpen(false)}
       />
     </div>
   )
